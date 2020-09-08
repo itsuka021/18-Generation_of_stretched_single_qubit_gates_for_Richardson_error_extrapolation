@@ -7,9 +7,8 @@ In IBM Quantum backends u1, u2, u3, id, cx gates are provided as basis gates and
 
 Given T1 and T2 are time invariant, you can eliminate this noise with Richardson error extrapolation [1]:
 
-$$ E\hat_K^n (\lambda) = \sum_{i=0}^n {\gamma_i E\hat_K (c_u \lambda} $$
-
-Here you need to calibrate underlying quantum gates with different stretch factor c_i. In the case of circuit composed of single qubit gates, you need to calibrate u1, u2, u3 gates. Because these gates are generated from x90 or y90 pulse with virtual z rotation (pre-processing of pulse envelope), you just need to calibrate x90 and y90 pulses.
+- <img src="https://latex.codecogs.com/gif.latex?E\hat_K^n (\lambda) = \sum_{i=0}^n {\gamma_i E\hat_K (c_u \lambda} " /> 
+e you need to calibrate underlying quantum gates with different stretch factor c_i. In the case of circuit composed of single qubit gates, you need to calibrate u1, u2, u3 gates. Because these gates are generated from x90 or y90 pulse with virtual z rotation (pre-processing of pulse envelope), you just need to calibrate x90 and y90 pulses.
 
 This is partially demonstrated by the joint work of U Chicago with IBM by using QiskitPulse [2]. In this paper they rescaled pulse amplitude with respect to the target rotation angle, but here we need to rescale both pulse duration and amplitude while the rotation angle remain unchanged, i.e. keeping the area under curve of your pulse envelope for different stretch factors.
 
