@@ -1,0 +1,82 @@
+import numpy as np
+import matplotlib.pylab as plt
+
+from qiskit import *
+from qiskit import QuantumCircuit
+from qiskit import transpile, schedule as build_schedule
+from qiskit.pulse import Schedule, Play, Gaussian, DriveChannel
+from qiskit import IBMQ, pulse
+from qiskit.pulse import library
+from qiskit.pulse.macros import measure
+from qiskit.providers.aer import PulseSimulator
+from qiskit.providers.aer.pulse import PulseSystemModel
+# from qiskit.ignis.characterization.calibrations import rabi_schedules, RabiFitter
+from qiskit.compiler import assemble
+
+IBMQ.load_account()
+
+backend_sim = PulseSimulator()
+
+# Mock Armonk backend
+from qiskit.test.mock.backends.armonk.fake_armonk import FakeArmonk
+armonk_backend = FakeArmonk()
+# set the drive strength
+getattr(armonk_backend.configuration(), 'hamiltonian')['vars']['omegad0'] = 63455017.85
+
+# set the qubit frequency
+freq_est = 4.97e9
+armonk_backend.defaults().qubit_freq_est = [freq_est]
+getattr(armonk_backend.configuration(), 'hamiltonian')['vars']['wq0'] = 2*np.pi*freq_est
+armonk_model = PulseSystemModel.from_backend(armonk_backend)
+import numpy as np
+
+from qiskit.pulse import Play, Waveform, ControlChannel
+from qiskit.pulse.schedule import ParameterizedSchedule
+from qiskit.pulse import MeasureChannel, AcquireChannel, MemorySlot, Play, GaussianSquare, Acquire
+cals = backend.defaults().instruction_schedule_map
+duration_m=16000
+duration=128
+amp_m=0.6
+amp=1
+sigma=32
+sigma_m=64
+measure_tx= pulse.Schedule()
+measure_rx=pulse.Schedule()
+measure_tx += Play(GaussianSquare(duration_m, amp, sigma_m,width=duration_m-250),
+                  MeasureChannel(0))
+for i in range (20):
+    measure_rx += Acquire(duration_m, AcquireChannel(i), MemorySlot(i))
+measure_sched = measure_tx + measure_rx
+measure_sched.draw()
+
+
+def q_gate(x):
+    sched = Schedule()
+    sched += Play(pulse.Gaussian(duration, amp, sigma), DriveChannel(0))
+    sched += measure_sched << sched.duration
+    return sched
+q_gate = ParameterizedSchedule(q_gate, parameters=['x'])
+q_gate(0).draw()
+
+cals.add('my_q', (0), q_gate)
+from qiskit.circuit import Gate
+
+my_q = Gate('my_q', num_qubits=1, params=[100])  # Here we pass `duration`, as 100
+circ = QuantumCircuit(1, 1)
+circ.append(my_q, [0])
+circ.draw()
+
+transpiled_circ = transpile(circ,
+                            coupling_map=[0],
+                            basis_gates=backend.configuration().basis_gates + ['my_q'])
+transpiled_circ.draw()
+schedule = build_schedule(transpiled_circ, backend, inst_map=cals)
+
+schedule.draw(plot_range=(0, 1500))
+schedule_qobj = assemble(schedule,
+                     backend=backend_sim,
+                     meas_level=1,
+#                      meas_return='avg',
+                     shots=2048)
+sim_result = backend_sim.run(schedule_qobj, armonk_model).result()
+sim_result.get_counts()
