@@ -1,0 +1,84 @@
+def update_x_gates(drag_params, pi2_pulse_schedules=None,
+                   qubits=None, inst_map=None, drives=None):
+    """Update the cmd_def with new single qubit gate values
+    Will update U2, U3
+    Args:
+        drag_params (list): list of drag params
+        pi2_pulse_schedules (list): list of new pi/2 gate as a pulse schedule
+                             will use the drag_params if this is None.
+        qubits (list): list of qubits to update
+        inst_map (InstructionScheduleMap): InstructionScheduleMap providing
+            circuit instruction to schedule definitions.
+        drives (list): List of drive chs
+    """
+    for qubit in qubits:
+
+        drive_ch = drives[qubit]
+
+        if pi2_pulse_schedules is None:
+            x90_pulse = pulse_lib.drag(**drag_params[qubit])
+            x90_sched = Schedule()
+            x90_sched += Play(x90_pulse, drive_ch).shift(0)
+        else:
+            x90_sched = pi2_pulse_schedules[qubit]
+
+        pulse_dur = x90_sched.duration
+
+        # find channel dependency for x
+
+        _x_group = (drive_ch, )
+            
+        # add commands to schedule
+        # x
+        sched_components = [x90_sched]
+        schedule1 = ParameterizedSchedule(*sched_components,
+                                          parameters=None, name='x_%d' % qubit)
+
+
+
+        inst_map.add('x', qubits=qubit, schedule=schedule1)
+    
+    def tune_X_param(params, C1):
+    """  (eg) C1 = 2 = ratio to extend duration & sigma
+     X pulse ==>
+        inst.pulse = Drag(duration=640, amp=(0.6472753752719002+0j), sigma=160, beta=-4.631873857015726)
+        inst.pulse.parameters  = {'duration': 640, 'amp': (0.6472753752719002+0j), 'sigma': 160, 'beta': -4.631873857015726}
+    """
+    params['sigma'] = params['sigma'] * C1
+    params['amp']   = params['amp'] / C1
+    params['duration'] = params['duration'] * C1
+    return params
+    #print(params)
+    
+    from qiskit import IBMQ, pulse
+from qiskit.pulse import library
+from qiskit.pulse.macros import measure
+from qiskit.ignis.characterization import update_u_gates, get_single_q_pulse
+IBMQ.load_account()
+
+
+backend_real = IBMQ.providers()[0].backends(open_pulse=True)[0]
+
+inst_map = backend_real.defaults().instruction_schedule_map
+# u2_sched = inst_map.get('u2', 0, P0=1, P1=1)
+x_sched = inst_map.get('x', 0)
+# print(u2_sched)
+print(x_sched)
+inst_x = x_sched.instructions[0][1]
+
+print(origin_params)
+
+print(inst_x)
+origin_params = inst_x.pulse.parameters
+inst_map.get('x', 0).draw()
+
+ci = 2
+mod_params = tune_X_param(origin_params, ci)
+print(mod_params)
+
+qubit = [0]
+from qiskit.pulse import library as pulse_lib, Schedule, Play, ShiftPhase
+from qiskit.pulse.schedule import ParameterizedSchedule
+update_x_gates([mod_params], None, qubit, inst_map, [pulse.DriveChannel(qubit[0])])
+
+inst_map.get('x', 0).draw()
