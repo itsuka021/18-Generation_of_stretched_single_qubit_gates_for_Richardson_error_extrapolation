@@ -30,8 +30,8 @@ Finally, we ran a single qubit randomized benchmarking algorithm with stretched 
 
     There's a look up table in device backend that qiskit transpile the quantum into microwave pulses implement in superconductor quantum computer through the mapping in this table. We change the mapping in the table so we can running the same quantum circuit in different stretch factor of pulse duration.
     * Example pulses for u2 gate, and u3 gate in the ibmq_bogota device, respectively.
-    ![](u2_gate.jpg)
-    ![](u3_gate.jpg)
+    ![Pulse for u2 gate](u2_gate.jpg | width = 200)
+    ![Pulse for u3 gate](u3_gate.jpg | width = 200)
     
 3. Randomized Benchmarking on different stretch factors
     We ran the RB for some different stretch factor c_i and used Richardson error extrapolation to calculate the noise free result.
