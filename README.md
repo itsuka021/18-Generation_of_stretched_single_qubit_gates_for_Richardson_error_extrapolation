@@ -48,14 +48,18 @@ Finally, we ran a single qubit randomized benchmarking algorithm with stretched 
     
     The yellow line in the figure has stretch factor 1 (the origin result without changing). stretch factor is 2 for blue line. The red line is calculate by the extrapolation. It seems a little strange and we are still looking for the reason.
 
+### Slides for presentation
+[The slides for presentation in Qiskit Hackathon Taiwan by Bai-Siang](IBMQ_Hackathon_Oral_%2318.pdf)
+
 ## Reference:
 [1] [Error mitigation extends the computational reach of a noisy quantum processor](https://www.nature.com/articles/s41586-019-1040-7)
 
 [2] [Optimized Quantum Compilation for Near-Term Algorithms with OpenPulse](https://arxiv.org/abs/2004.11205)
 
-## Members
-@supergravity
-@itsuka021
-@xiaotai-yang
-@HuberyMing
-Qiskit Coach: @nkanazawa1989 - Slack @Naoki Kanazawa emal knzwnao@jp.ibm.com
+## Members (name in alphabetical order)
+* Hsu,Ming-Chien @HuberyMing
+* Lin,Tzu-Lu @supergravity
+* Yeh,Bai-Siang @itsuka021
+* Yang,tai-hsuan @xiaotai-yang
+
+* Qiskit Coach: Naoki Kanazawa @nkanazawa1989 - Slack @Naoki Kanazawa Email knzwnao@jp.ibm.com
