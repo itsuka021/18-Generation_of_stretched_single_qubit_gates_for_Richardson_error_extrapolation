@@ -20,10 +20,10 @@ Finally, we ran a single qubit randomized benchmarking algorithm with stretched 
 
     We run the rabi oscillation for each pulses amplitude and fitting the data to get the rabi frequencies for each amplitude. After that, we can check the qubit dynamics is linear in the regime we did the experiments.
     * running the rabi oscillation on IBMQ_Bogota quantum computer
-    ![Rabi Oscillation for each pulse amplitude](Oscillation.jpg)
+    ![Rabi Oscillation for each pulse amplitude](figures/Oscillation.jpg)
     
     * fitting the data and get the rabi frequency for each pulse amplitude.
-    ![real device (ibmq_bogota) result](linearity.jpg)
+    ![real device (ibmq_bogota) result](figures/linearity.jpg)
     
     The result is linear in the region that pulse amplitude between 0.3 and 1. Since the qubit dynamics is linear in this regime, we can easily modify the duration and the pulse to keep the pulse area.
 2. Modify the instruction schedule map
@@ -32,19 +32,19 @@ Finally, we ran a single qubit randomized benchmarking algorithm with stretched 
     
     * Example pulses for u2 gate, and u3 gate in the ibmq_armonk device, respectively.
     
-    ![Pulse for u2 gate](u2_gate.jpg) <!-- .element height="50%" width="50%" -->
+    ![Pulse for u2 gate](figures/u2_gate.jpg) <!-- .element height="50%" width="50%" -->
     
-    ![Pulse for u3 gate](u3_gate.jpg) <!-- .element height="50%" width="50%" -->
+    ![Pulse for u3 gate](figures/u3_gate.jpg) <!-- .element height="50%" width="50%" -->
     
     * Example for stretching the duration of the pulse and the pulse amplitude change to keep the area invariant.
     
-    ![original u2](u2_gate.jpg) 
+    ![original u2](figures/u2_gate.jpg) 
     
-    ![stretched u2](u2_gate_c2.jpg)
+    ![stretched u2](figures/u2_gate_c2.jpg)
     
 3. Randomized Benchmarking on different stretch factors
     We ran the RB for some different stretch factor c_i and used Richardson error extrapolation to calculate the noise free result.
-    ![RB_result](Richardson_RB_result_2.jpg)
+    ![RB_result](figures/Richardson_RB_result_2.jpg)
     
     The yellow line in the figure has stretch factor 1 (the origin result without changing). stretch factor is 2 for blue line. The red line is calculate by the extrapolation. It seems a little strange and we are still looking for the reason.
 
