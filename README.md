@@ -32,9 +32,9 @@ Finally, we ran a single qubit randomized benchmarking algorithm with stretched 
     
     * Example pulses for u2 gate, and u3 gate in the ibmq_armonk device, respectively.
     
-    ![Pulse for u2 gate](figures/u2_gate.jpg) <!-- .element height="50%" width="50%" -->
+    ![Pulse for u2 gate](figures/u2_gate.jpg)
     
-    ![Pulse for u3 gate](figures/u3_gate.jpg) <!-- .element height="50%" width="50%" -->
+    ![Pulse for u3 gate](figures/u3_gate.jpg)
     
     * Example for stretching the duration of the pulse and the pulse amplitude change to keep the area invariant.
     
