@@ -12,6 +12,7 @@ We wrote a function to modify the instruction schedule map (inst_map), which is 
 1. [1-Qubit Randomized Benchmarking with different stretch factors](Demo_RB_on_ibmq_armonk.ipynb)
 2. [Checking linearity of the qubit dynamics](Rabi_linear_fit_on_ibmq_bogota.ipynb)
 3. [Function for modifying instruction schedule map](functions/backend_modification.py)
+
 ## Abstract
 With QiskitPulse we can create custom quantum gates that is not provided by a backend. One of easy and practical examples is single qubit gates. In this project, we generate u1, u2, u3 gates with different stretch factor using QiskitPulse and run randomized benchmarking algorithm to estimate systematic error.
 
@@ -45,19 +46,11 @@ Finally, we ran a single qubit randomized benchmarking algorithm with stretched 
     
     * Example pulses for u2 gate, and u3 gate in the ibmq_armonk device, respectively.
     
-    ![Pulse for u2 gate](figures/u2.jpg)
-    
-    ![Pulse for u3 gate](figures/u3.jpg)
+    ![Pulse for u2/u3gate](figures/ex_gate_pulse.png)
     
     * Example for stretching the duration of the pulse and the pulse amplitude change to keep the area invariant.
     
-    ![original u2](figures/u2.jpg) 
-    
-    ![stretched u2](figures/u2_mod.jpg)
-    
-    ![original u3](figures/u3.jpg) 
-    
-    ![stretched u3](figures/u3_mod.jpg)
+    ![example of stretching the pu2/u3ulse](figures/ex_stretch_gate.png)
     
 3. Randomized Benchmarking on different stretch factors
     We ran the RB for some different stretch factor c_i and used Richardson error extrapolation to calculate the noise free result.
