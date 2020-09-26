@@ -23,12 +23,12 @@ def mod_inst_map(inst_map_, c_factor, qubits, dri_channel):
     origin_params_ = []
     for q in qubits:
         q_list = [q]
-        u2_pulse = inst_map_.get('u2', q_list, P0=1, P1=1).instructions[1][1].pulse
-        is_param = getattr(u2_pulse, 'parameters', None)
+        u3_pulse = inst_map_.get('u3', q_list, P0=1, P1=1, P2=1).instructions[1][1].pulse
+        is_param = getattr(u3_pulse, 'parameters', None)
         if is_param is None:
             origin_params_.append(get_single_q_pulse(inst_map_, q_list)[0])
         else:
-            origin_params_.append(u2_pulse.parameters)
+            origin_params_.append(u3_pulse.parameters)
     print('Original Parameters')
     print(origin_params_)
 

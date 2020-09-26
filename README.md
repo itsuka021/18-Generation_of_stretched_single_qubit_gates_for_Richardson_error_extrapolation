@@ -45,15 +45,19 @@ Finally, we ran a single qubit randomized benchmarking algorithm with stretched 
     
     * Example pulses for u2 gate, and u3 gate in the ibmq_armonk device, respectively.
     
-    ![Pulse for u2 gate](figures/u2_gate.jpg)
+    ![Pulse for u2 gate](figures/u2.jpg)
     
-    ![Pulse for u3 gate](figures/u3_gate.jpg)
+    ![Pulse for u3 gate](figures/u3.jpg)
     
     * Example for stretching the duration of the pulse and the pulse amplitude change to keep the area invariant.
     
-    ![original u2](figures/u2_gate.jpg) 
+    ![original u2](figures/u2.jpg) 
     
-    ![stretched u2](figures/u2_gate_c2.jpg)
+    ![stretched u2](figures/u2_mod.jpg)
+    
+    ![original u3](figures/u3.jpg) 
+    
+    ![stretched u3](figures/u3_mod.jpg)
     
 3. Randomized Benchmarking on different stretch factors
     We ran the RB for some different stretch factor c_i and used Richardson error extrapolation to calculate the noise free result.
