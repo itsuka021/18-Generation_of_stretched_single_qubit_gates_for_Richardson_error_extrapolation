@@ -44,9 +44,9 @@ Finally, we ran a single qubit randomized benchmarking algorithm with stretched 
     
 3. Randomized Benchmarking on different stretch factors
     We ran the RB for some different stretch factor c_i and used Richardson error extrapolation to calculate the noise free result.
-    ![RB_result](figures/Richardson_RB_result_2.jpg)
+    ![RB_result](figures/Richardson_RB.jpg)
     
-    The yellow line in the figure has stretch factor 1 (the origin result without changing). stretch factor is 2 for blue line. The red line is calculate by the extrapolation. It seems a little strange and we are still looking for the reason.
+    The blue line in the figure has stretch factor 1 (the origin result without changing). stretch factor is 2 for yellow line and 3 for green line. The red line is calculate by the first order Richardson Extrapolation and purple line is from second order. 
 
 ### Slides for presentation
 [The slides for presentation in Qiskit Hackathon Taiwan by Bai-Siang](IBMQ_Hackathon_Oral_%2318_.pdf)
