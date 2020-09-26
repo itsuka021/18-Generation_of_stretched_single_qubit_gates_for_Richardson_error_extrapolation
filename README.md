@@ -1,4 +1,17 @@
 # Generation of stretched single qubit gates for Richardson error extrapolation
+## Contents
+* Abstract
+* Description
+* Reference
+* Members
+
+**_How to use ?_**
+
+We wrote a function to modify the instruction schedule map (inst_map), which is the lookup table for translating "Quantum Gates" in the circuits to the pulse schedule used to drive qubits. The python function is put in "functions" folder and we demonstrate the 1-Qubit Randomized Benchmarking and checking the linearity of qubit dynamics. You can go through the following jupyter notebook in the repository.
+
+1. ![1-Qubit Randomized Benchmarking with different stretch factors](Demo_RB_on_ibmq_armonk.ipynb)
+2. ![Checking linearity of the qubit dynamics](Rabi_linear_fit_on_ibmq_bogota.ipynb)
+3. ![Function for modifying instruction schedule map](functions/backend_modification.py)
 ## Abstract
 With QiskitPulse we can create custom quantum gates that is not provided by a backend. One of easy and practical examples is single qubit gates. In this project, we generate u1, u2, u3 gates with different stretch factor using QiskitPulse and run randomized benchmarking algorithm to estimate systematic error.
 
