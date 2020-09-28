@@ -12,7 +12,7 @@ The python function is put in "functions" folder and we demonstrate the 1-Qubit 
 You can go through the following jupyter notebook in the repository.
 
 The data of RB experiments are open, you can retrieve the data by using the "Job ID" shown in the notebook.
-
+The calibration data of IBMQ_Armonk on Sep 28 is also available in the folder "Backend_Calibration_data"
 1. [1-Qubit Randomized Benchmarking with different stretch factors](Demo_RB_on_ibmq_armonk.ipynb)
 2. [Checking linearity of the qubit dynamics](Rabi_linear_fit_on_ibmq_bogota.ipynb)
 3. [Function for modifying instruction schedule map](functions/backend_modification.py)
