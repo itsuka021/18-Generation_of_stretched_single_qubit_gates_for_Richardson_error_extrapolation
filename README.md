@@ -7,7 +7,11 @@
 
 **_How to use ?_**
 
-We wrote a function to modify the instruction schedule map (inst_map), which is a lookup table for translating "Quantum Gates" in the circuits to the pulse schedule used to drive qubits. The python function is put in "functions" folder and we demonstrate the 1-Qubit Randomized Benchmarking and checking the linearity of qubit dynamics. You can go through the following jupyter notebook in the repository.
+We wrote a function to modify the instruction schedule map (inst_map), which is a lookup table for translating "Quantum Gates" in the circuits to the pulse schedule used to drive qubits. 
+The python function is put in "functions" folder and we demonstrate the 1-Qubit Randomized Benchmarking and checking the linearity of qubit dynamics. 
+You can go through the following jupyter notebook in the repository.
+
+The data of RB experiments are open, you can retrieve the data by using the "Job ID" shown in the notebook.
 
 1. [1-Qubit Randomized Benchmarking with different stretch factors](Demo_RB_on_ibmq_armonk.ipynb)
 2. [Checking linearity of the qubit dynamics](Rabi_linear_fit_on_ibmq_bogota.ipynb)
@@ -57,7 +61,11 @@ Finally, we ran a single qubit randomized benchmarking algorithm with stretched 
     ![RB_result](figures/Richardson_RB.jpg)
     
     The blue line in the figure has stretch factor 1 (the origin result without changing). stretch factor is 2 for yellow line and 3 for green line. The red line is calculate by the first order Richardson Extrapolation and purple line is from second order. 
-
+    
+    The result is interesting that the error mitigated data is perfectly. 
+    There's no decay or the decay rate is quite small that the population is remain in the ground state.
+    IBMQ_Armonk Backend has only one qubit is a important reason, one qubit device means there's no correlation to other qubits in the device so we don't need to consider the noise come from them.
+    Another reason is some noise on the Quantum Computer should independent of gate time. No matter what the stretch factor is, the strength of this kind of noise doesn't change. 
 ### Slides for presentation
 [The slides for presentation in Qiskit Hackathon Taiwan by Bai-Siang](IBMQ_Hackathon_Oral_%2318_.pdf)
 
