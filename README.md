@@ -11,10 +11,10 @@ We wrote a function to modify the instruction schedule map (inst_map), which is 
 The python function is put in "functions" folder and we demonstrate the 1-Qubit Randomized Benchmarking and checking the linearity of qubit dynamics. 
 You can go through the following jupyter notebook in the repository.
 
-The data of RB experiments are open, you can retrieve the data by using the "Job ID" shown in the notebook.
-The calibration data of IBMQ_Armonk on Sep 28 is also available in the folder "Backend_Calibration_data"
+The data of linearity and RB experiments are open, you can retrieve the data by using the "Job ID" shown in the notebook.
+The calibration data of IBMQ_Armonk on Sep 28 (RB) and Sep 30 (Linearity) are also available in the folder "Backend_Calibration_data"
 1. [1-Qubit Randomized Benchmarking with different stretch factors](Demo_RB_on_ibmq_armonk.ipynb)
-2. [Checking linearity of the qubit dynamics](Rabi_linear_fit_on_ibmq_bogota.ipynb)
+2. [Checking linearity of the qubit dynamics](Demo_Linearity_on_ibmq_armonk.ipynb)
 3. [Function for modifying instruction schedule map](functions/backend_modification.py)
 
 ## Abstract
