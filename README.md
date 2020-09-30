@@ -37,11 +37,11 @@ Finally, we ran a single qubit randomized benchmarking algorithm with stretched 
 1. Check the linearity
 
     We run the rabi oscillation for each pulses amplitude and fitting the data to get the rabi frequencies for each amplitude. After that, we can check the qubit dynamics is linear in the regime we did the experiments.
-    * running the rabi oscillation on IBMQ_Bogota quantum computer
+    * running the rabi oscillation on IBMQ_Armonk quantum computer
     ![Rabi Oscillation for each pulse amplitude](figures/Oscillation.jpg)
     
     * fitting the data and get the rabi frequency for each pulse amplitude.
-    ![real device (ibmq_bogota) result](figures/linearity.jpg)
+    ![real device (ibmq_armonk) result](figures/linearity.jpg)
     
     The result is linear in the region that pulse amplitude between 0.3 and 1. Since the qubit dynamics is linear in this regime, we can easily modify the duration and the pulse to keep the pulse area.
 2. Modify the instruction schedule map
